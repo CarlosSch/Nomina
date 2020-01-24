@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0 auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-color: #EDEDED;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: #212121;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+.container-login {
+  width: auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-content: center;
+  margin-top: 200px;
+  transition: all 300ms;
+}
+
+.gridLeft {
+  width: 400px;
+  height: 400px;
+  max-height: 450px;
+  padding: 50px;
+  color: #FFF;
+  text-align: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image: linear-gradient(to right,
+    rgb(92, 107, 192, 0.8),
+    rgba(33, 33, 33, 0.6)
+  ),
+  url('../assets/login.jpg');
+  box-shadow: rgb(0, 0, 0, 0.8) 0px 0px 10px;
+}
+
+.gridLeft h1 {
+  font-size: 50px;
+  font-weight:lighter;
+  color: #FFF;
+  margin-bottom: 70px;
+}
+
+.gridLeft p {
+  margin-top: 50px;
+  font-size: 22px;
+}
+
+.gridLeft img{
+  width: 250px;
+  margin-bottom: 40px;
+}
+
+.gridRight {
+  width: 400px;
+  height: 400px;
+  max-height: 450px;
+  background-color: #FFF;
+  justify-content: center;
+  text-align: center;
+  padding: 50px;
+}
+
+.gridRight i {
+  font-size: 150px;
+  margin-top: 40px;
+}
+
+
+.gridRight h2 {
+  text-align: left;
+  margin-bottom: 10px;
+  color: #455A64;
+}
+
+.gridRight p {
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 30px;
+  color: #455A64;
+}
+
+.container-login input[type="text"], input[type="password"] {
+  width: 85%;
+  font-size: 15px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid rgb(92, 107, 192, 0.8);
+}
+
+.input-user::before {
+  content: "\f007";
+  margin-top: 10px;
+  margin-right: 10px;
+  position: relative;
+  font-family: 'FontAwesome';
+  font-size: 25px;
+  color: #5c6bc0;
+}
+
+.input-pass::before {
+  content: "\f023";
+  margin-top: 10px;
+  margin-right: 10px;
+  position: relative;
+  font-family: 'FontAwesome';
+  font-size: 25px;
+  color: #5c6bc0;
+}
+
+.container-login input[type="text"]:hover, input[type="password"]:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.container-login input[type="submit"] {
+  width: 85%;
+  height: 40px;
+  margin-top: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  background-color: #5c6bc0;
+  color: #FFF;
+  box-shadow: rgba(33, 33, 33, 0.5);
+}
+
+.btn-login:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+/*Cambia el color de la propiedad Placeholer*/
+
+::placeholder {
+  color: #a3a2a2;
+}
+
+.error {
+  background-color: #E74F4F;
+  position: absolute;
+  top: 0;
+  padding: 10px 0;
+  border-radius: 0 0 5px 5px;
+  color: #fff;
+  font: 16px century gothic;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
