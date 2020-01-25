@@ -296,7 +296,7 @@ if (isset($_SESSION['usuario'])) {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Crecimiento Escolar</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Solicitudes de Revisión</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -335,6 +335,7 @@ if (isset($_SESSION['usuario'])) {
                       <th>Inicio</th>
                       <th>Cierre</th>
                       <th>Total</th>
+                      <th>Acción</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -343,6 +344,7 @@ if (isset($_SESSION['usuario'])) {
                       <th>Inicio</th>
                       <th>Cierre</th>
                       <th>Total</th>
+                      <th>Acción</th>
                     </tr>
                   </tfoot>
                 </table>

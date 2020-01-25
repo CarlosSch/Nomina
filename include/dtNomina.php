@@ -15,11 +15,14 @@
                 "inicio" => $row['inicio'],
                 "cierre" => $row['cierre'],
                 "quincena" => $row['quincena'],
+                "accion" => "<a href='#watch' data-toggle='modal'><button type='button' class='btn btn-info btn-sm'><i class='far fa-eye'></i></button></a>"
             );        
+
         }
     }else{
         echo "No hay registros";
         echo json_encode(array('error'=>true));
+        $conn -> close();
     }
 
     $results = array(
@@ -27,5 +30,6 @@
         "TotalRecords" => count($dataN),
         "TotalDisplayRecords" => count($dataN),
         "data"=>$dataN);
-        echo json_encode($results);        
+
+        echo json_encode($results, JSON_PRETTY_PRINT);        
 ?>

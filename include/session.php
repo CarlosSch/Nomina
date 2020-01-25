@@ -17,6 +17,7 @@
 			$_SESSION['usuario']=$row['usuario'];
 			$_SESSION['nombreC']=$row['nombreC'];
 			$_SESSION['tipo']=$row['tipo'];
+			$_SESSION['num_emplados'] = $rows;
 			echo json_encode(array('error'=>false, 'tipo'=>$row['tipo']));
 			} else {
 				session_destroy();

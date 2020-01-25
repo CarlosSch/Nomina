@@ -9,6 +9,7 @@ $(document).ready(function(){
           { data: 'inicio' },
           { data: 'cierre' },
           { data: 'quincena' },
+          { data: 'accion'}
        ]
     });
  });
