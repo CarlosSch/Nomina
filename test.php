@@ -1,7 +1,7 @@
 <?php
     require 'include/conexion.php';  
     
-    $sql = "SELECT * FROM datos;";
+    $sql = "SELECT * FROM nomina;";
     $result = $conn->query($sql);
 
 
@@ -9,13 +9,13 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
 
-            $idata = array();
-            $idata[] = $row["id_asistencias"];
-            $idata[] = $row["nombre"];
-            $idata[] = $row["nombreC"];
-            $idata[] = $row["usuario"];
+            $dataN = array();
+            $dataN[] = $row["id_asistencias"];
+            $dataN[] = $row["fecha"];
+            $dataN[] = $row["quincena"];
+            $dataN[] = $row["usuarios"];
 
-            $data[] = $idata;
+            $data[] = $dataN;
         
         }
     }else{

@@ -7,7 +7,7 @@ $(document).ready(function(){
            'url':'test.php'
        },
        'columns': [
-          { data: 'emp_name' },
+          { data: '' },
           { data: 'email' },
           { data: 'gender' },
           { data: 'salary' },
