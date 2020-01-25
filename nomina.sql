@@ -38,11 +38,17 @@ CREATE TABLE asistencias (
 
 CREATE TABLE nomina(
     id_nomina INT(6) PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE,
-    quincena DOUBLE (8,3),
-    mes DOUBLE (8,3),
-    id_empleado TINYINT (3), INDEX (id_empleado), FOREIGN KEY (id_empleado) REFERENCES empleados (id_empleado)
+    inicio DATE,
+    cierre DATE,
+    quincena DOUBLE (10,3)
 );
+
+INSERT INTO nomina
+        VALUES 
+            (1, "2020-01-11", "2020-01-24", 789901.50),
+            (2, "2020-01-25", "2020-02-07", 789901.50),
+            (3, "2020-02-08", "2020-01-21", 789901.50);
+
 
 INSERT INTO tipo 
         VALUES
