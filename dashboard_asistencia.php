@@ -1,5 +1,7 @@
 <?php
 include 'include/session.php';
+include 'include/controller_asistencia.php';
+
 if (isset($_SESSION['usuario'])) {
   if ($_SESSION['tipo'] == "Empleado") {
     header("location:dashboard_empleados.php");
@@ -233,7 +235,7 @@ if (isset($_SESSION['usuario'])) {
                       <th>Nombre Empleado</th>
                       <th>Faltas</th>
                       <th>Permisos</th>
-                      <th>Fecha</th>
+                      <th>Día</th>
                       <th>Hora de Entrada</th>
                       <th>Hora de Salida</th>
                       <th>Entrada Comida</th>
@@ -247,7 +249,7 @@ if (isset($_SESSION['usuario'])) {
                       <th>Nombre Empleado</th>
                       <th>Faltas</th>
                       <th>Permisos</th>
-                      <th>Fecha</th>
+                      <th>Día</th>
                       <th>Hora de Entrada</th>
                       <th>Hora de Salida</th>
                       <th>Entrada Comida</th>
@@ -258,6 +260,75 @@ if (isset($_SESSION['usuario'])) {
                   </tfoot>
 
                   <!-----------------------Editar elementos--------------------->
+                  <tbody>
+                    <tr>
+                      <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Editar Asistencia</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <input type="hidden" name="id_asistencia" value="<?php ?>">  
+                            <form>
+                                <div class="form-group">
+                                  <label for="recipient-name" class="col-form-label">Nombre:</label>
+                                  <input type="text" class="form-control" id="recipient-name">
+                                </div>
+                                <div class="form-group">
+                                  <label for="recipient-name" class="col-form-label">Fecha:</label>
+                                  <input type="date" class="form-control" id="recipient-name">
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Entrada:</label>
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Salida:</label>
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name" >
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-time" class="col-form-label">Entrada Comida:</label>
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Salida Comida:</label>
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name" >
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Faltas:</label>
+                                    <input type="number" min="0" max="14" class="form-control" id="recipient-name" value="0">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Permisos:</label>
+                                    <input type="number" min="0" max="10" class="form-control" id="recipient-name" value="0">
+                                  </div>
+                                </div>
+
+                                
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                              <button type="button" class="btn btn-primary" name="update_sitem">Editar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </tr>
+                  </tbody>
+
 
 
                 </table>
@@ -268,39 +339,6 @@ if (isset($_SESSION['usuario'])) {
         </div>
         <!-- End of Main Content -->
 
-        <!-- Edit Modal-->
-        <tbody>
-          <th>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </th>
-        </tbody>
 
 
 
