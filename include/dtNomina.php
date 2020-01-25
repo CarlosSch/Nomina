@@ -1,5 +1,5 @@
 <?php
-    require 'include/conexion.php';  
+    require 'conexion.php';  
     
     $sql = "SELECT * FROM nomina;";
     $result = $conn->query($sql);
