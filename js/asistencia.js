@@ -8,6 +8,12 @@ $(document).ready(function(){
         },
         'columns':[
             {data:'id_asistencias'},
+            {data:'id_asistencias'},
+            {data:'id_asistencias'},
+            {data:'id_asistencias'},
+            {data:'id_asistencias'},
+            {data:'id_asistencias'},
+
             
         ]
 
