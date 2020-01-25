@@ -49,7 +49,7 @@ if (isset($_SESSION['usuario'])) {
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
 
-  <script src="js/dtNomina.js"> </script>
+  <script src="js/dtAsistencia.js"> </script>
 
 </head>
 
@@ -73,7 +73,7 @@ if (isset($_SESSION['usuario'])) {
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -98,14 +98,14 @@ if (isset($_SESSION['usuario'])) {
 
       <!-- Nav Item - AREAS -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="dashboard_nomina.php">
           <i class="fas fa-credit-card"></i>
           <span>Nómina</span></a>
       </li>
 
       <!-- Nav Item - Calendario -->
-      <li class="nav-item">
-        <a class="nav-link" href="dashboard_asistencia.php">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-table"></i>
           <span>Asistencias</span></a>
       </li>
@@ -215,138 +215,51 @@ if (isset($_SESSION['usuario'])) {
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">Control de Asistencias </h1>
           </div>
 
-          <!-- Content Row -->
-          <div class="row">
-            <!--  Students Card -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card bg-success text-white shadow h-100 py-2 ">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-white text-uppercase mb-1">EMPLEADOS</div>
-                      <div class="h5 mb-0 font-weight-bold text-white">35</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-portrait fa-2x text-white"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Teacher Card  -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card bg-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-white text-uppercase mb-1">AREAS</div>
-                      <div class="h5 mb-0 font-weight-bold text-white">5</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-network-wired fa-2x text-white"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Employees Card  -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card bg-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-white text-uppercase mb-1">NÓMINAS</div>
-                      <div class="h5 mb-0 font-weight-bold text-white">5</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-white"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card bg-danger shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-white text-uppercase mb-1">ASISTENCIAS</div>
-                      <div class="h5 mb-0 font-weight-bold text-white">18</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="far fa-list-alt fa-2x text-white"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Row -->
-          <div class="row">
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Solicitudes de Revisión</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Row -->
-          <div class="row">
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Crecimiento Escolar</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                </div>
-              </div>
-            </div>
-          </div>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Nóminas</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Asistencias</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table id='nomina' class="table table-bordered" width="100%" cellspacing="0">
+                <table id='asistencias' class="table table-bordered" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>Inicio</th>
-                      <th>Cierre</th>
-                      <th>Total</th>
+                      <th>Nombre Empleado</th>
+                      <th>Faltas</th>
+                      <th>Permisos</th>
+                      <th>Fecha</th>
+                      <th>Hora de Entrada</th>
+                      <th>Hora de Salida</th>
+                      <th>Entrada Comida</th>
+                      <th>Salida Comida</th>
                       <th>Acción</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>No.</th>
-                      <th>Inicio</th>
-                      <th>Cierre</th>
-                      <th>Total</th>
+                      <th>Nombre Empleado</th>
+                      <th>Faltas</th>
+                      <th>Permisos</th>
+                      <th>Fecha</th>
+                      <th>Hora de Entrada</th>
+                      <th>Hora de Salida</th>
+                      <th>Entrada Comida</th>
+                      <th>Salida Comida</th>
                       <th>Acción</th>
+
                     </tr>
                   </tfoot>
+
+                  <!-----------------------Editar elementos--------------------->
+
+
                 </table>
               </div>
             </div>
@@ -354,6 +267,44 @@ if (isset($_SESSION['usuario'])) {
 
         </div>
         <!-- End of Main Content -->
+
+        <!-- Edit Modal-->
+        <tbody>
+          <th>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </th>
+        </tbody>
+
+
+
+
 
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -393,6 +344,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
       </div>
     </div>
+
 </body>
 
 </html>
