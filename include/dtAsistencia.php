@@ -1,10 +1,10 @@
 <?php
     require 'conexion.php';
+
     $sql="SELECT * FROM datosA;";
-
     $result=$conn->query($sql);
-
     $dataA=array();
+    
     if ($result->num_rows>0){
 
         while($row = $result->fetch_assoc()){
@@ -36,6 +36,5 @@
         "TotalRecords" => count($dataA),
         "TotalDisplayRecords" => count($dataA),
         "data"=>$dataA);
-        echo json_encode($results);       
-
+        echo json_encode($results);
 ?>

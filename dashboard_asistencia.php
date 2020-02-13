@@ -1,6 +1,5 @@
 <?php
 include 'include/session.php';
-include 'include/controller_asistencia.php';
 
 if (isset($_SESSION['usuario'])) {
   if ($_SESSION['tipo'] == "Empleado") {
@@ -50,8 +49,6 @@ if (isset($_SESSION['usuario'])) {
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
-
-  <script src="js/dtAsistencia.js"> </script>
 
 </head>
 
@@ -220,11 +217,38 @@ if (isset($_SESSION['usuario'])) {
             <h1 class="h3 mb-0 text-gray-800">Control de Asistencias </h1>
           </div>
 
+          <div class="row">
+            <div class="btn-group ml-auto mb-4" role="group" aria-label="Button group with nested dropdown">
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#filesmodal"> <i class="fas fa-upload"></i> Subir Excel</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filesmodal"> Agregar</button>
+
+              <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Mes
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item" href="#">Enero</a>
+                  <a class="dropdown-item" href="#">Febrero</a>
+                  <a class="dropdown-item" href="#">Marzo</a>
+                  <a class="dropdown-item" href="#">Abril</a>
+                  <a class="dropdown-item" href="#">Mayo</a>
+                  <a class="dropdown-item" href="#">Junio</a>
+                  <a class="dropdown-item" href="#">Julio</a>
+                  <a class="dropdown-item" href="#">Agosto</a>
+                  <a class="dropdown-item" href="#">Septiembre</a>
+                  <a class="dropdown-item" href="#">Octubre</a>
+                  <a class="dropdown-item" href="#">Noviembre</a>
+                  <a class="dropdown-item" href="#">Diciembre</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Asistencias</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Listado de Asistencias</h6>
+
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -272,8 +296,8 @@ if (isset($_SESSION['usuario'])) {
                               </button>
                             </div>
                             <div class="modal-body">
-                              <input type="hidden" name="id_asistencia" value="<?php ?>">  
-                            <form>
+                              <input type="hidden" name="id_asistencia" value="<?php ?>">
+                              <form>
                                 <div class="form-group">
                                   <label for="recipient-name" class="col-form-label">Nombre:</label>
                                   <input type="text" class="form-control" id="recipient-name">
@@ -290,7 +314,7 @@ if (isset($_SESSION['usuario'])) {
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="recipient-name" class="col-form-label">Salida:</label>
-                                    <input type="time" step="0.001" class="form-control" id="recipient-name" >
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
                                   </div>
                                 </div>
 
@@ -301,7 +325,7 @@ if (isset($_SESSION['usuario'])) {
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="recipient-name" class="col-form-label">Salida Comida:</label>
-                                    <input type="time" step="0.001" class="form-control" id="recipient-name" >
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
                                   </div>
                                 </div>
 
@@ -316,7 +340,7 @@ if (isset($_SESSION['usuario'])) {
                                   </div>
                                 </div>
 
-                                
+
                               </form>
                             </div>
                             <div class="modal-footer">
@@ -328,9 +352,6 @@ if (isset($_SESSION['usuario'])) {
                       </div>
                     </tr>
                   </tbody>
-
-
-
                 </table>
               </div>
             </div>
@@ -338,10 +359,6 @@ if (isset($_SESSION['usuario'])) {
 
         </div>
         <!-- End of Main Content -->
-
-
-
-
 
 
         <!-- Footer -->
@@ -364,6 +381,52 @@ if (isset($_SESSION['usuario'])) {
       <i class="fas fa-angle-up"></i>
     </a>
 
+    <!-- Excel Files Modal -->
+    <div class="modal fade" id="filesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Subir Excel</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="post" id="filesform" enctype="multipart/form-data" role="form">
+            <div class="modal-body">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="files" name="files" accept=".csv" required>
+                <label class="custom-file-label" for="customFile">Elegir archivo</label>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" onclick="uploadData()" class="btn btn-primary">Subir archivo</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Delete Modal-->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Elimar registro</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body  alert alert-danger mt-4 mb-4 ml-4 mr-4">¿Estas seguro de elimniar el registro?</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="include/logout.php">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -382,6 +445,8 @@ if (isset($_SESSION['usuario'])) {
         </div>
       </div>
     </div>
+
+    <script src="js/dtAsistencia.js"> </script>
 
 </body>
 

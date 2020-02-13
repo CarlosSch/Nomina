@@ -227,7 +227,7 @@ if (isset($_SESSION['usuario'])) {
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-white text-uppercase mb-1">EMPLEADOS</div>
-                      <div class="h5 mb-0 font-weight-bold text-white">35</div>
+                      <div class="h5 mb-0 font-weight-bold text-white"><?php echo $_SESSION['num_emplo']?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-portrait fa-2x text-white"></i>
@@ -351,7 +351,6 @@ if (isset($_SESSION['usuario'])) {
               </div>
             </div>
           </div>
-
         </div>
         <!-- End of Main Content -->
 
