@@ -70,4 +70,9 @@ $(document).ready(function() {
             { data: 'accion' }
         ]
     });
-})
+});
+
+
+function test(){
+    alert("enero");
+};

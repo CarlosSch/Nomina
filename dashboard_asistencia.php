@@ -233,8 +233,8 @@ if (isset($_SESSION['usuario'])) {
                   Mes
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a class="dropdown-item" href="">Enero</a>
-                  <a class="dropdown-item" href="">Febrero</a>
+                  <a class="dropdown-item text-dark" onclick="test()" name="enero">Enero</a>
+                  <a class="dropdown-item text-dark" href="">Febrero</a>
                   <a class="dropdown-item" href="">Marzo</a>
                   <a class="dropdown-item" href="">Abril</a>
                   <a class="dropdown-item" href="">Mayo</a>

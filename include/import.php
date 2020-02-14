@@ -1,6 +1,6 @@
 <?php
 include 'conexion.php';
-    
+
 $filecontent = $_FILES['files'];
 $filecontent = file_get_contents($filecontent['tmp_name']);
 
@@ -31,6 +31,6 @@ foreach ($contentList as $contentData){
 }
 
 //print_r($contentList);
-$conn->close();
+exit;
 die("Connection closed");
 ?>
