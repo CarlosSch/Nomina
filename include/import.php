@@ -1,6 +1,6 @@
 <?php
 include 'conexion.php';
-
+    
 $filecontent = $_FILES['files'];
 $filecontent = file_get_contents($filecontent['tmp_name']);
 

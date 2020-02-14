@@ -98,7 +98,7 @@ if (isset($_SESSION['usuario'])) {
       <!-- Nav Item - AREAS -->
       <li class="nav-item">
         <a class="nav-link" href="dashboard_nomina.php">
-          <i class="fas fa-credit-card"></i>
+          <i class="fas fa-credit-card"></i>  
           <span>Nómina</span></a>
       </li>
 
@@ -214,41 +214,40 @@ if (isset($_SESSION['usuario'])) {
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Control de Asistencias </h1>
+            <h1 class="h3 mb-0 mt-4 text-gray-800">Control de Asistencias </h1>
           </div>
 
-          <div class="row">
+          <div class="row mr-1">
             <div class="btn-group ml-auto mb-4" role="group" aria-label="Button group with nested dropdown">
               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#filesmodal"> <i class="fas fa-upload"></i> Subir Excel</button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filesmodal"> Agregar</button>
-
-              <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Mes
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a class="dropdown-item" href="#">Enero</a>
-                  <a class="dropdown-item" href="#">Febrero</a>
-                  <a class="dropdown-item" href="#">Marzo</a>
-                  <a class="dropdown-item" href="#">Abril</a>
-                  <a class="dropdown-item" href="#">Mayo</a>
-                  <a class="dropdown-item" href="#">Junio</a>
-                  <a class="dropdown-item" href="#">Julio</a>
-                  <a class="dropdown-item" href="#">Agosto</a>
-                  <a class="dropdown-item" href="#">Septiembre</a>
-                  <a class="dropdown-item" href="#">Octubre</a>
-                  <a class="dropdown-item" href="#">Noviembre</a>
-                  <a class="dropdown-item" href="#">Diciembre</a>
-                </div>
-              </div>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add"> Agregar</button>
             </div>
           </div>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Listado de Asistencias</h6>
-
+            <div class="card-header py-4">
+              <h5 class="m-0 font-weight-bold text-primary">Listado de Asistencias
+              <div class="btn-group float-right mr-1" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Mes
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item" href="">Enero</a>
+                  <a class="dropdown-item" href="">Febrero</a>
+                  <a class="dropdown-item" href="">Marzo</a>
+                  <a class="dropdown-item" href="">Abril</a>
+                  <a class="dropdown-item" href="">Mayo</a>
+                  <a class="dropdown-item" href="">Junio</a>
+                  <a class="dropdown-item" href="">Julio</a>
+                  <a class="dropdown-item" href="">Agosto</a>
+                  <a class="dropdown-item" href="">Septiembre</a>
+                  <a class="dropdown-item" href="">Octubre</a>
+                  <a class="dropdown-item" href="">Noviembre</a>
+                  <a class="dropdown-item" href="">Diciembre</a>
+                </div>
+              </div>
+              </h5>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -279,13 +278,76 @@ if (isset($_SESSION['usuario'])) {
                       <th>Entrada Comida</th>
                       <th>Salida Comida</th>
                       <th>Acción</th>
-
                     </tr>
                   </tfoot>
 
-                  <!-----------------------Editar elementos--------------------->
                   <tbody>
                     <tr>
+                  <!-----------------------Agregar Asistencias--------------------->
+                    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Añadir Asistencia</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <input type="hidden" name="id_asistencia" value="<?php ?>">
+                              <form>
+                                <div class="form-group">
+                                  <label for="recipient-name" class="col-form-label">Id empleado:</label>
+                                  <input type="number" class="form-control" id="recipient-name">
+                                </div>
+                                <div class="form-group">
+                                  <label for="recipient-name" class="col-form-label">Fecha:</label>
+                                  <input type="date" class="form-control" id="recipient-name">
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Entrada:</label>
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Salida:</label>
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-time" class="col-form-label">Entrada Comida:</label>
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Salida Comida:</label>
+                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Faltas:</label>
+                                    <input type="number" min="0" max="14" class="form-control" id="recipient-name" value="0">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="recipient-name" class="col-form-label">Permisos:</label>
+                                    <input type="number" min="0" max="10" class="form-control" id="recipient-name" value="0">
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                              <button type="button" class="btn btn-primary" name="update_sitem">Editar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-----------------------Editar asistencias--------------------->
                       <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                           <div class="modal-content">
@@ -339,17 +401,17 @@ if (isset($_SESSION['usuario'])) {
                                     <input type="number" min="0" max="10" class="form-control" id="recipient-name" value="0">
                                   </div>
                                 </div>
-
-
                               </form>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                              <button type="button" class="btn btn-primary" name="update_sitem">Editar</button>
+                              <button type="button" onclick="addData()" class="btn btn-primary">Agregar</button>
                             </div>
                           </div>
                         </div>
                       </div>
+
+
                     </tr>
                   </tbody>
                 </table>
@@ -401,13 +463,13 @@ if (isset($_SESSION['usuario'])) {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="button" onclick="uploadData()" class="btn btn-primary">Subir archivo</button>
+              <button type="submit" onclick="uploadData()" class="btn btn-primary">Subir archivo</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    
+
     <!-- Delete Modal-->
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -418,15 +480,15 @@ if (isset($_SESSION['usuario'])) {
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body  alert alert-danger mt-4 mb-4 ml-4 mr-4">¿Estas seguro de elimniar el registro?</div>
+          <div class="modal-body  alert alert-danger m-4">¿Estas seguro de elimniar el registro?</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="include/logout.php">Eliminar</a>
+            <button class="btn btn-primary" type="button">Eliminar</button>
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
