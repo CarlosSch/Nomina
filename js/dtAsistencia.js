@@ -1,5 +1,5 @@
 //Muestra el nombre del archivo seleccionado en el input type="file"
-$(".custom-file-input").on("change", function () {
+$(".custom-file-input").on("change", function() {
     var fileName = $(this).val().split("\\").pop();
     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
@@ -14,15 +14,39 @@ function uploadData() {
         data: Form,
         processData: false,
         contentType: false,
-        success: function (data) {
-            $('#filesmodal').modal('hide');//Oculta el modal para subir archivos
+        success: function(data) {
+            $('#filesmodal').modal('hide'); //Oculta el modal para subir archivos
             $("#asistencias").DataTable().ajax.reload(); //Recarga el datable
         }
     });
 }
 
+//Funcion agregar Data
+
+function addData() {
+    var Form = new FormData($('#addData')[0]);
+
+    $.ajax({
+        url: "include/controller_asistencia.php",
+        type: "post",
+        data: Form,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            $('#add').modal('hide'); //Oculta el modal para subir archivos
+            $("#asistencias").DataTable().ajax.reload(); //Recarga el datable
+        }
+    });
+
+
+
+
+}
+
+
+
 //Funcion ajax para desplegar los datos en el datatable con JSON
-$(document).ready(function () {
+$(document).ready(function() {
     $('#asistencias').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"

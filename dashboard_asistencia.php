@@ -295,53 +295,53 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <div class="modal-body">
                               <input type="hidden" name="id_asistencia" value="<?php ?>">
-                              <form>
+                              <form id= "addData"> 
                                 <div class="form-group">
                                   <label for="recipient-name" class="col-form-label">Id empleado:</label>
-                                  <input type="number" class="form-control" id="recipient-name">
+                                  <input type="number" class="form-control" id="recipient-name" name="id" required>
                                 </div>
                                 <div class="form-group">
                                   <label for="recipient-name" class="col-form-label">Fecha:</label>
-                                  <input type="date" class="form-control" id="recipient-name">
+                                  <input type="date" class="form-control" id="recipient-name" name="fecha" required>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="recipient-name" class="col-form-label">Entrada:</label>
-                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                    <input type="time" step="1" class="form-control" id="recipient-name" name="in" required>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="recipient-name" class="col-form-label">Salida:</label>
-                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                    <input type="time" step="1" class="form-control" id="recipient-name" name="out" required >
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="recipient-time" class="col-form-label">Entrada Comida:</label>
-                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                    <input type="time" step="1" class="form-control" id="recipient-name" name="ineat" required>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="recipient-name" class="col-form-label">Salida Comida:</label>
-                                    <input type="time" step="0.001" class="form-control" id="recipient-name">
+                                    <input type="time" step="1" class="form-control" id="recipient-name" name="outeat" required>
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="recipient-name" class="col-form-label">Faltas:</label>
-                                    <input type="number" min="0" max="14" class="form-control" id="recipient-name" value="0">
+                                    <input type="number" min="0" max="14" class="form-control" id="recipient-name" value="0" name="faltas" required>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="recipient-name" class="col-form-label">Permisos:</label>
-                                    <input type="number" min="0" max="10" class="form-control" id="recipient-name" value="0">
+                                    <input type="number" min="0" max="10" class="form-control" id="recipient-name" value="0" name="permisos" required>
                                   </div>
                                 </div>
                               </form>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                              <button type="button" class="btn btn-primary" name="update_sitem">Editar</button>
+                              <button type="submit" class="btn btn-primary" onclick="addData()" name="add">Agregar</button>
                             </div>
                           </div>
                         </div>
@@ -405,7 +405,7 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                              <button type="button" onclick="addData()" class="btn btn-primary">Agregar</button>
+                              <button type="button" class="btn btn-primary">Editar</button>
                             </div>
                           </div>
                         </div>
