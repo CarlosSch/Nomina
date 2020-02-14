@@ -18,6 +18,7 @@ CREATE TABLE empleados(
     nombre VARCHAR (25),
     a_paterno VARCHAR (25),
     a_materno VARCHAR (25),
+    photo TEXT,
     pass VARCHAR (30),
     salario DOUBLE(8,3),
     id_tipo TINYINT (1), INDEX (id_tipo), FOREIGN KEY (id_tipo) REFERENCES tipo(id_tipo),

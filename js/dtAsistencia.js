@@ -37,10 +37,6 @@ function addData() {
             $("#asistencias").DataTable().ajax.reload(); //Recarga el datable
         }
     });
-
-
-
-
 }
 
 

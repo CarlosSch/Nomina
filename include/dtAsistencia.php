@@ -11,7 +11,7 @@
 
             $dataA[] = array(
                 "id_asistencias" => $row['id_asistencias'],
-                "nombre" => $row['nombre'],
+                "nombre" => $row['nombre']."<img src='assets/profiles/clopezg.png' width='20px' heigth='20px' style='border-radius:50%'>",
                 "faltas" => $row['faltas'],
                 "permisos" => $row['permisos'],
                 "fecha" => $row['fecha'],
