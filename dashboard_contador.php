@@ -94,14 +94,14 @@ if (isset($_SESSION['usuario'])) {
 
       <!-- Nav Item - EMPLOYEES -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="empleados.php">
           <i class="fas fa-portrait"></i>
           <span>Empleados</span></a>
       </li>
 
       <!-- Nav Item - AREAS -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="nomina.php">
           <i class="fas fa-credit-card"></i>
           <span>Nómina</span></a>
       </li>
@@ -191,7 +191,7 @@ if (isset($_SESSION['usuario'])) {
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" style="text-align: center;">
+                <a class="dropdown-item" style="text-align: center;">Tipo: 
                   <?php echo $_SESSION['tipo']; ?>
                 </a>
 

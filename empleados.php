@@ -89,22 +89,22 @@ if (isset($_SESSION['usuario'])) {
       <!-- Nav Item - Pages Collapse Menu -->
 
       <!-- Nav Item - Empleados -->
-      <li class="nav-item">
-        <a class="nav-link" href="empleados.php">
+      <li class="nav-item active">
+        <a class="nav-link" href="charts.html">
           <i class="fas fa-portrait"></i>
           <span>Empleados</span></a>
       </li>
 
       <!-- Nav Item - Nomina -->
       <li class="nav-item">
-        <a class="nav-link" href="nomina.php">
-          <i class="fas fa-credit-card"></i>
+        <a class="nav-link" href="dashboard_nomina.php">
+          <i class="fas fa-credit-card"></i>  
           <span>Nómina</span></a>
       </li>
 
       <!-- Nav Item - Asistencia -->
-      <li class="nav-item  active">
-        <a class="nav-link" href="#">
+      <li class="nav-item">
+        <a class="nav-link" href="asistencia.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Asistencias</span></a>
       </li>
@@ -187,7 +187,7 @@ if (isset($_SESSION['usuario'])) {
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" style="text-align: center;">Tipo:
+                <a class="dropdown-item" style="text-align: center;">Tipo: 
                   <?php echo $_SESSION['tipo']; ?>
                 </a>
 
@@ -214,88 +214,69 @@ if (isset($_SESSION['usuario'])) {
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 mt-4 text-gray-800">Control de Asistencias </h1>
+            <h1 class="h3 mb-0 mt-4 text-gray-800">Control de Empleados</h1>
           </div>
 
           <div class="row mr-1">
             <div class="btn-group ml-auto mb-4" role="group" aria-label="Button group with nested dropdown">
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#filesmodal"> <i class="fas fa-upload"></i> Subir Excel</button>
-              <button type="button" class="btn btn-secondary" onclick="recargar()">Actualizar</button>
+              <button type="button" class="btn btn-info" onclick="recargar()">Actualizar</button>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add"> Agregar</button>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-6 mb-4 mb-5">
-              <div class="card shadow">
-                <div class="card-header py-4">
-                  <h5 class="m-0 font-weight-bold text-primary">Buscar Asistencias</h5>
-                </div>
-                <div class="card-body">
-
-                  <form>
-                    <div class="form-row mb-4">
-                      <div class="form-group col-md-6">
-                        <label for="recipient-name" class="col-form-label">Fecha inicio:</label>
-                        <input type="date" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="recipient-name" class="col-form-label">Fecha fin:</label>
-                        <input type="date" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group col-md-6 ">
-                        <label for="recipient-name" class="col-form-label">ID empleado:</label>
-                        <input type="number" class="form-control" id="recipient-name">
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary" onclick="test()" name="add">Listar Asistencia</button>
-
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-4">
-              <h5 class="m-0 font-weight-bold text-primary">Listado de Asistencias</h5>
+              <h5 class="m-0 font-weight-bold text-primary">Listado de empleados
+              <div class="btn-group float-right mr-1" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Mes
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item text-dark" onclick="test()" name="enero">Enero</a>
+                  <a class="dropdown-item text-dark" href="">Febrero</a>
+                  <a class="dropdown-item" href="">Marzo</a>
+                  <a class="dropdown-item" href="">Abril</a>
+                  <a class="dropdown-item" href="">Mayo</a>
+                  <a class="dropdown-item" href="">Junio</a>
+                  <a class="dropdown-item" href="">Julio</a>
+                  <a class="dropdown-item" href="">Agosto</a>
+                  <a class="dropdown-item" href="">Septiembre</a>
+                  <a class="dropdown-item" href="">Octubre</a>
+                  <a class="dropdown-item" href="">Noviembre</a>
+                  <a class="dropdown-item" href="">Diciembre</a>
+                </div>
+              </div>
+              </h5>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table id='asistencias' class="table table-bordered" width="100%" cellspacing="0">
-                  <thead>
+                <table id='empleados' class="table table-bordered" width="100%" cellspacing="0">
+                  <thead class="thead-dark">
                     <tr>
                       <th>No.</th>
                       <th>Nombre Empleado</th>
-                      <th>Faltas</th>
-                      <th>Permisos</th>
-                      <th>Día</th>
-                      <th>Hora de Entrada</th>
-                      <th>Hora de Salida</th>
-                      <th>Entrada Comida</th>
-                      <th>Salida Comida</th>
+                      <th>Area</th>
+                      <th>Correo</th>
+                      <th>Estado</th>
                       <th>Acción</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>No.</th>
+                    <th>No.</th>
                       <th>Nombre Empleado</th>
-                      <th>Faltas</th>
-                      <th>Permisos</th>
-                      <th>Día</th>
-                      <th>Hora de Entrada</th>
-                      <th>Hora de Salida</th>
-                      <th>Entrada Comida</th>
-                      <th>Salida Comida</th>
+                      <th>Area</th>
+                      <th>Correo</th>
+                      <th>Estado</th>
                       <th>Acción</th>
                     </tr>
                   </tfoot>
 
                   <tbody>
                     <tr>
-                      <!-----------------------Agregar Asistencias--------------------->
-                      <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <!-----------------------Agregar empleado--------------------->
+                    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -306,7 +287,7 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <div class="modal-body">
                               <input type="hidden" name="id_asistencia" value="<?php ?>">
-                              <form id="addData">
+                              <form id= "addData"> 
                                 <div class="form-group">
                                   <label for="recipient-name" class="col-form-label">Id empleado:</label>
                                   <input type="number" class="form-control" id="recipient-name" name="id" required>
@@ -323,7 +304,7 @@ if (isset($_SESSION['usuario'])) {
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="recipient-name" class="col-form-label">Salida:</label>
-                                    <input type="time" step="1" class="form-control" id="recipient-name" name="out" required>
+                                    <input type="time" step="1" class="form-control" id="recipient-name" name="out" required >
                                   </div>
                                 </div>
 
@@ -358,7 +339,7 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                       </div>
 
-                      <!-----------------------Editar asistencias--------------------->
+                      <!-----------------------Editar empleado--------------------->
                       <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                           <div class="modal-content">
@@ -491,7 +472,7 @@ if (isset($_SESSION['usuario'])) {
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body  alert alert-danger m-4">¿Estas seguro de elimniar el registro?</div>
+          <div class="modal-body  alert alert-danger m-4">¿Estas seguro de elimniar al empleado?</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             <button class="btn btn-primary" type="button">Eliminar</button>
@@ -519,7 +500,7 @@ if (isset($_SESSION['usuario'])) {
       </div>
     </div>
 
-    <script src="js/dtAsistencia.js"> </script>
+    <script src="js/dtEmpleado.js"> </script>
 
 </body>
 

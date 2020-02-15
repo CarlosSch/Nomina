@@ -68,6 +68,14 @@ $(document).ready(function() {
     });
 });
 
+function recargar(){
+    $.ajax({
+        success:  function(data){
+            $("#asistencias").DataTable().ajax.reload(); //Recarga el datable
+        }
+    });
+
+}
 
 function test(){
     alert("enero");
