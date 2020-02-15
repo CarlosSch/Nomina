@@ -1,17 +1,18 @@
 <?php
     require 'conexion.php';
 
-    $sql="SELECT * FROM datosA;";
+    $sql="SELECT id_asistencias, faltas, permisos, fecha, h_entrada, h_salida, in_comida, out_comida, photo, CONCAT(nombre,' ',p,' ',m) AS nombreC  FROM datosA;";
     $result=$conn->query($sql);
     $dataA=array();
     
     if ($result->num_rows>0){
 
         while($row = $result->fetch_assoc()){
+            $photo = $row['photo'];
 
             $dataA[] = array(
                 "id_asistencias" => $row['id_asistencias'],
-                "nombre" => $row['nombre']."<img src='assets/profiles/clopezg.png' width='20px' heigth='20px' style='border-radius:50%'>",
+                "nombre" => "<img src='assets/profiles/$photo' class='img-profile rounded-circle mr-2' width=30>" . $row['nombreC'],
                 "faltas" => $row['faltas'],
                 "permisos" => $row['permisos'],
                 "fecha" => $row['fecha'],
