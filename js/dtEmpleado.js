@@ -20,3 +20,11 @@ $(document).ready(function() {
         ]
     });
 });
+
+function recargar(){
+    $.ajax({
+        success: function(data){
+            $("#empleados").DataTable().ajax.reload();
+        }
+    });
+}

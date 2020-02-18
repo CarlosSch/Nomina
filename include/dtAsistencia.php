@@ -21,7 +21,7 @@
                 "in_comida" => $row['in_comida'],
                 "out_comida" => $row['out_comida'],
                 "accion" => "
-                            <a href='#edit' data-toggle='modal'><button type='button' class='btn btn-warning btn-sm'><i class='far fa-edit'></i></button></a>  
+                            <a href='#edit' data-toggle='modal'><button type='button' onclick='datos();' class='btn btn-warning btn-sm'><i class='far fa-edit'></i></button></a>  
                             <a href='#delete' data-toggle='modal'><button type='button' class='btn btn-danger btn-sm'><i class='far fa-trash-alt'></i></button></a>
                             "
             );        

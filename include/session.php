@@ -22,7 +22,8 @@
 			echo json_encode(array('error'=>false, 'tipo'=>$row['tipo']));
 			} else {
 				session_destroy();
-                echo json_encode(array('error'=>true));
+				echo json_encode(array('error'=>true));
+				$conn->close();
+				$sql->free();
 		}
 	}
-?>

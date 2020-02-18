@@ -1,10 +1,6 @@
 <?php
     require "conexion.php";
         
-    if(isset($_POST['add'])){
-        echo "<script>alert('success');</script>";
-
-    }
         //Funcion Para Agregar Datos del Modal 
         $id = $_POST['id'];
         $fecha = $_POST['fecha'];
@@ -14,18 +10,21 @@
         $outeat = $_POST['outeat'];
         $faltas = $_POST['faltas'];
         $permisos =$_POST['permisos'];
+        if(isset($id)&&isset($fecha)&&isset($in)&&isset($out)&&isset($ineat)&&isset($outeat)){
+            echo "LLenos";
+
+        }
 
         $sql="INSERT INTO asistencias (faltas,permisos,fecha,h_entrada, h_salida, in_comida, out_comida, id_empleado) VALUES ($faltas,$permisos,'$fecha','$in','$out','$ineat','$outeat', $id);";
     
         if($conn->query($sql)==true){
 
-            echo "Si";
-
+            echo "<script>alert('Registro exitoso');</script>";
+            $conn->close();
         }
         else{
-            echo "no ". $conn->error;
+            echo "<script>alert('No se inserto el registro!');</script>";
         }
-        exit;
 
         if(isset($_POST['update_item'])){
             $id_asistencias =$_POST['id_asistencias'];

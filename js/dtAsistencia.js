@@ -21,8 +21,7 @@ function uploadData() {
     });
 }
 
-//Funcion agregar Data
-
+//Funcion agregar registros
 function addData() {
     var Form = new FormData($('#addData')[0]);
 
@@ -34,7 +33,7 @@ function addData() {
         contentType: false,
         success: function(data) {
             $('#add').modal('hide'); //Oculta el modal para subir archivos
-            $("#asistencias").DataTable().ajax.reload(); //Recarga el datable
+            recargar();
         }
     });
 }
@@ -80,3 +79,23 @@ function recargar(){
 function test(){
     alert("enero");
 };
+
+function datos(){
+    $(document).ready(function() {
+        $('#asistencias').DataTable( {
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal( {
+                        header: function ( row ) {
+                            var data = row.data();
+                            return 'Details for '+data[0]+' '+data[1];
+                        }
+                    } ),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                        tableClass: 'table'
+                    } )
+                }
+            }
+        } );
+    } );
+}

@@ -46,6 +46,8 @@ if (isset($_SESSION['usuario'])) {
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
@@ -219,8 +221,15 @@ if (isset($_SESSION['usuario'])) {
 
           <div class="row mr-1">
             <div class="btn-group ml-auto mb-4" role="group" aria-label="Button group with nested dropdown">
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#filesmodal"> <i class="fas fa-upload"></i> Subir Excel</button>
-              <button type="button" class="btn btn-secondary" onclick="recargar()">Actualizar</button>
+
+              <span class="d-inline-block" data-toggle="tooltip" title="Cargar Archivo">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#filesmodal"> <i class="fas fa-upload"></i> Subir Excel</button>
+              </span>
+
+              <span class="d-inline-block" data-toggle="tooltip" title="Actuzalizar tabla">
+                <button type="button" class="btn btn-secondary" onclick="recargar()">Actualizar</button>
+              </span>
+
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add"> Agregar</button>
             </div>
           </div>
@@ -305,8 +314,7 @@ if (isset($_SESSION['usuario'])) {
                               </button>
                             </div>
                             <div class="modal-body">
-                              <input type="hidden" name="id_asistencia" value="<?php ?>">
-                              <form id="addData">
+                              <form method="post" id="addData" role="form">
                                 <div class="form-group">
                                   <label for="recipient-name" class="col-form-label">Id empleado:</label>
                                   <input type="number" class="form-control" id="recipient-name" name="id" required>
@@ -348,12 +356,13 @@ if (isset($_SESSION['usuario'])) {
                                     <input type="number" min="0" max="10" class="form-control" id="recipient-name" value="0" name="permisos" required>
                                   </div>
                                 </div>
-                              </form>
-                            </div>
-                            <div class="modal-footer">
+                                <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                               <button type="submit" class="btn btn-primary" onclick="addData()" name="add">Agregar</button>
+                               </div>
+                              </form>
                             </div>
+  
                           </div>
                         </div>
                       </div>
